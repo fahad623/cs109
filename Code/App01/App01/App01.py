@@ -19,11 +19,16 @@ def recurse_node(indent, element):
         lastTag = child.tag
 
 def get_poll_xml(id):
+    proxyDict = { 
+              "http"  : "web-proxy.houston.hp.com:8088", 
+              "https" : "web-proxy.houston.hp.com:8088" 
+              }
+
     url = u'http://charts.realclearpolitics.com/charts/{0}.xml'.format(id)
-    r = requests.get(url)
+    r = requests.get(url, proxies=proxyDict)
     return r.text
 
-#xmlText  = get_poll_xml(1044)
+
 
 xmlText = '''
     <chart>
@@ -43,10 +48,8 @@ xmlText = '''
     </graphs>
     </chart>
     '''
-
+xmlText  = get_poll_xml(1044)
 dom = web.Element(xmlText)
-
-
 
 listDates = []
 series = dom.by_tag('series')
@@ -56,4 +59,17 @@ for value in values:
 
 frame = pd.DataFrame({'date': pd.to_datetime(listDates)})
 
+for graph in dom.by_tag('graph'):
+    title = (graph.attributes['title'])
+    values = graph.by_tag('value')
+    listGraphValues = []
+    for value in values:
+        listGraphValues.append(value.content)
+
+    s = np.array(listGraphValues)
+    s[s==''] = '0'
+    s.astype(float)
+    frame[title] = s
+
+frame = frame.sort(['date'])
 print frame
