@@ -48,28 +48,29 @@ xmlText = '''
     </graphs>
     </chart>
     '''
-xmlText  = get_poll_xml(1044)
+#xmlText  = get_poll_xml(1044)
 dom = web.Element(xmlText)
 
-listDates = []
-series = dom.by_tag('series')
-values = series[0].by_tag('value')
-for value in values:
-    listDates.append(value.content)
 
-frame = pd.DataFrame({'date': pd.to_datetime(listDates)})
+dates = dom.by_tag('series')[0]
+frame = pd.DataFrame({'date': pd.to_datetime([str(n.content) for n in dates.by_tag('value')])})
 
 for graph in dom.by_tag('graph'):
-    title = (graph.attributes['title'])
-    values = graph.by_tag('value')
-    listGraphValues = []
-    for value in values:
-        listGraphValues.append(value.content)
+    name = graph.attributes['title']
 
-    s = np.array(listGraphValues)
-    s[s==''] = '0'
-    s.astype(float)
-    frame[title] = s
+    frame[name] = [float(n.content) if n.content else np.nan for n in graph.by_tag('value')]
 
-frame = frame.sort(['date'])
+#for graph in dom.by_tag('graph'):
+#    title = (graph.attributes['title'])
+#    values = graph.by_tag('value')
+#    listGraphValues = []
+#    for value in values:
+#        listGraphValues.append(value.content)
+
+#    s = np.array(listGraphValues)
+#    s[s==''] = '0'
+#    s.astype(float)
+#    frame[title] = s
+
+frame = frame.sort(columns = ['date'])
 print frame
