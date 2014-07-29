@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>2b70f19e-e0b1-447d-b3e1-e213d6ccb453</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>App01.py</StartupFile>
+    <StartupFile>module2.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="App01.py" />
     <Compile Include="module1.py" />
+    <Compile Include="module2.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>

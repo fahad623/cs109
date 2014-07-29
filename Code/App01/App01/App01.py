@@ -60,17 +60,5 @@ for graph in dom.by_tag('graph'):
 
     frame[name] = [float(n.content) if n.content else np.nan for n in graph.by_tag('value')]
 
-#for graph in dom.by_tag('graph'):
-#    title = (graph.attributes['title'])
-#    values = graph.by_tag('value')
-#    listGraphValues = []
-#    for value in values:
-#        listGraphValues.append(value.content)
-
-#    s = np.array(listGraphValues)
-#    s[s==''] = '0'
-#    s.astype(float)
-#    frame[title] = s
-
 frame = frame.sort(columns = ['date'])
 print frame
