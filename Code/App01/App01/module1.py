@@ -1,3 +1,3 @@
+import numpy as np
 
-
-print 'this is number {0}'.format(7)
+print np.random.randint(0, 10, 5)
