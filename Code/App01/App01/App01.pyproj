@@ -6,6 +6,7 @@
     <ProjectGuid>2b70f19e-e0b1-447d-b3e1-e213d6ccb453</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>module4.py</StartupFile>
+    <StartupFile>module6.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -27,6 +28,8 @@
     <Compile Include="module2.py" />
     <Compile Include="module3.py" />
     <Compile Include="module4.py" />
+    <Compile Include="module5.py" />
+    <Compile Include="module6.py" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
 </Project>
