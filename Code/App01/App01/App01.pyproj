@@ -6,7 +6,7 @@
     <ProjectGuid>2b70f19e-e0b1-447d-b3e1-e213d6ccb453</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>module4.py</StartupFile>
-    <StartupFile>module9.py</StartupFile>
+    <StartupFile>module11.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,8 @@
   <ItemGroup>
     <Compile Include="App01.py" />
     <Compile Include="module1.py" />
+    <Compile Include="module10.py" />
+    <Compile Include="module11.py" />
     <Compile Include="module2.py" />
     <Compile Include="module3.py" />
     <Compile Include="module4.py" />
